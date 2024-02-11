@@ -1,0 +1,47 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ 
+}
+body{
+  background-color: #3ca63a;
+  width:100%;
+  height:100vh;
+}
+header{
+  position:fixed;
+  width:100%;
+  left:0;
+  top:0;
+}
+.Navbar{
+  display:flex;
+  align-items:center;
+  max-width:1200px;
+  margin: 0 auto;
+  justify-content:space-between;
+}
+.Navbar.Logo{
+  display:flex;
+  gap:10px;
+
+  align-items:center;
+}
+.Navbar.Logo img{
+  width:40px;
+}
+.Navbar.Logo h3{
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+.Navbar.Saites{
+  display:flex;
+  list-style:none;
+  gap:35px;
+}
+.Navbar.Saites a{
+  text-decoration:none;
+  font-size:1.1rem;
+  font-weight:500;
+}
