@@ -9,6 +9,37 @@ body {
   width: 100%;
   height: 100vh;
 }
+h1{
+  text-align:center;
+  font-weight:bold;
+  color:#00ffb3;
+  margin-left: 5%;
+}
+input[type="text"]{
+  margin: 5px;
+  width: 15%;
+  margin-right:15px;
+  border: 3px solid #ccc;
+}
+input[type="password"]{
+  margin: 5px;
+  width: 15%;
+  margin-left:35px;
+  border: 3px solid #ccc;
+}
+form{
+  padding:1rem;
+  margin:3px;
+  text-align: center;
+
+}
+#saglabat{
+  background-color: #00ffb3;
+  font-weight:bold;
+  margin-left:7%;
+  width:100px;
+  border-radius:5px;
+}
 
 #opciju_saraksts{
   position:absolute;
@@ -37,3 +68,24 @@ body {
   transform: translateY(4px);
 }
 
+#registresanas_info,#ielogosanas_info,#info{
+  color:#00ffb3;
+  margin-top:25rem;
+  margin-left:25rem;
+  width:60%;
+  background-color: #00000059;
+
+
+
+  padding: 50px 0px 50px 0px;
+}
+p,a{
+  margin-top:10px;
+
+}
+p{
+  margin-left:7%;
+}
+a{
+  color:#d1b566;
+}

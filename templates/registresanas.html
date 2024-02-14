@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../static/style.css" rel="stylesheet" type="text/css"/>
+  <link rel="icon" href="../static/Bildes/.ico" type="image/x-icon">
+  <title>Laumdotu Lāde</title>
+
+</head>
+<body>
+<div id="registresanas_info">
+    <h1>Reģistrēšanās</h1>
+      <form action="registresanas" method= "post">
+      <label for="lvards">{{teksti["lietotajvards"]}}</label>
+      <input autocomplete="off" autofocus placeholder="Lietotājvārds" type="text" id="lvards" name="lvards"required><br>
+      <label for="parole">{{teksti["parole"]}}</label>
+      <input autocomplete="off" autofocus placeholder="Parole" type="password" id="parole" name="parole"required><br>
+
+    <br>
+      <input type = "submit" value = "Reģistrēties" name = "submit" id="saglabat">
+
+     <p>Jau ir izveidots konts? <a href="/ielogosanas">Ielogoties</a>.</p>
+  </form>
+</div>
+
+
+</body>                    
+</html>
