@@ -4,44 +4,36 @@
   box-sizing: border-box;
  
 }
-body{
-  background-color: #3ca63a;
-  width:100%;
-  height:100vh;
+body {
+  background-color: #1a472a;
+  width: 100%;
+  height: 100vh;
 }
-header{
-  position:fixed;
-  width:100%;
-  left:0;
-  top:0;
-}
-.Navbar{
-  display:flex;
-  align-items:center;
-  max-width:1200px;
-  margin: 0 auto;
-  justify-content:space-between;
-}
-.Navbar.Logo{
-  display:flex;
-  gap:10px;
 
-  align-items:center;
+#opciju_saraksts{
+  position:absolute;
+  left: 40%;
+  top: 50%;
+
+  text-align: center;
+
+  display: inline-block;
+  /*border: 2px dashed #f00000*/
 }
-.Navbar.Logo img{
-  width:40px;
+#varianti{
+  background-color: #00ffb3;
+  border-radius:10px;
+  font-size:20px;
+  font-weight:bold;
+  z-index:10px;
+  box-shadow: 0px 0px 10px #000000;
+  width:100%;
+  margin:3px;
+
 }
-.Navbar.Logo h3{
-  font-size: 1.7rem;
-  font-weight: 600;
+#varianti:active {
+  background-color: #00ffb3;
+  box-shadow: 0 5px #000000;
+  transform: translateY(4px);
 }
-.Navbar.Saites{
-  display:flex;
-  list-style:none;
-  gap:35px;
-}
-.Navbar.Saites a{
-  text-decoration:none;
-  font-size:1.1rem;
-  font-weight:500;
-}
+
