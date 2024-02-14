@@ -1,8 +1,26 @@
 {
   "sakums":{
-    "registresanas_poga": "Reģistrēties",
-    "ielogoties_poga": "Ielogoties"
+    "registresanas_poga": "REĢISTRĒTIES",
+    "ielogoties_poga": "IELOGOTIES",
+    "par_mums": "Par mums",
+    "kontakti": "Kontakti",
+    "majas": "Mājās \"Laimdotas\" ir dzīvojušas vairāks talantīgas paaudzes, bet šobrīd to apdzīvo Zarkeviču ģimene un katram ir savas intereses un hobiji. Šī ir vieta, kur uzgalbāt savus darbus, ja vēlas var dalīties ar lāžu īpašniekiem un citiem tās lietotājiem.",
+    "stastu_lade": "Šī lāde ir viena no lielākajām šajā mājā, jo  tajā  glabājas gan Initas, gan Annas, gan Daigas stāsti.",
+    "muzikas_lade": "",
+    "spelu_lade": "",
+    "mākslas_lade": ""
 
 
   },
+  "registresanas":{
+    "virsraksts":"Registrēšanas",
+    "lietotajvards": "Lietotaja vārds",
+    "parole": "Parole"
+  },
+  "ielogosanas":{
+    "virsraksts":"Ielogošanās",
+    "lietotajvards": "Lietotaja vārds",
+    "parole": "Parole"
+
+  }
 }
