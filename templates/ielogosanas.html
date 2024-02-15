@@ -11,11 +11,12 @@
 </head>
 <body>
   <div id="ielogosanas_info">
+    <br>
       <h1>Ielogošanās</h1>
       <form action="ielogosanas" method= "post">
-        <label for="lvards">Lietotājvārds:</label>
+        <label for="lvards">{{teksti["lietotajvards"]}}</label>
         <input autocomplete="off" autofocus placeholder="Lietotājvārds" type="text" id="lvards" name="lvards"required><br>
-        <label for="parole">Parole:</label>
+        <label for="parole">{{teksti["parole"]}}</label>
         <input autocomplete="off" autofocus placeholder="Parole" type="password" id="parole" name="parole"required><br>
         <p><a href="/jauna_parole">Aizmirsi paroli?</a></p>
       <br>

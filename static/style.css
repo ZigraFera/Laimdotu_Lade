@@ -6,33 +6,51 @@
 }
 body {
   background-color: #1a472a;
-  width: 100%;
-  height: 100vh;
-}
+ 
 h1{
   text-align:center;
   font-weight:bold;
-  color:#00ffb3;
+  color:#3bb08d;
   margin-left: 5%;
 }
 input[type="text"]{
   margin: 5px;
   width: 15%;
+  font-size: 20px;
   margin-right:15px;
-  border: 3px solid #ccc;
+  border: 3px solid #ecb154;
+  background-color: #faf0e4;
+  color: #1a472a;
 }
 input[type="password"]{
   margin: 5px;
   width: 15%;
+  font-size: 20px;
   margin-left:35px;
-  border: 3px solid #ccc;
+  border: 3px solid #ecb154;
+  background-color: #faf0e4;
+  color: #1a472a;
+
 }
+  input:focus{
+    outline: none;
+    border:3px solid #af7c39;
+    
+    
+  }
+  label{
+    font-weight: bold;
+    color: #3bb08d;
+  }
+  
+
 form{
   padding:1rem;
-  margin:3px;
+  margin:4px;
   text-align: center;
 
 }
+
 #saglabat{
   background-color: #00ffb3;
   font-weight:bold;
@@ -69,11 +87,17 @@ form{
 }
 
 #registresanas_info,#ielogosanas_info,#info{
-  color:#00ffb3;
+  color:#1a472a;
   margin-top:25rem;
-  margin-left:25rem;
-  width:60%;
-  background-color: #00000059;
+  margin-left:30rem;
+  
+  width:50%;
+  /* background-color: #00000059; */
+  background-image:url("./Bildes/scroll2.png");
+  background-size: 100%115%;
+  background-position: center;
+  background-repeat: no-repeat;
+
 
 
 
@@ -87,5 +111,5 @@ p{
   margin-left:7%;
 }
 a{
-  color:#d1b566;
+  color:#f44e34;
 }
