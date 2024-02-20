@@ -5,33 +5,82 @@
  
 }
 body {
-  background-color: #1a472a;
+  background: url('./Bildes/bush.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.fade-out {
+  animation: fadeOut 5s;
+  pointer-events:none;
+}
+
+.fade-in {
+  
+  animation: fadeIn 6s;
+  pointer-events:auto;
+
+}
+.shows-up {
+
+  animation: fadeIn 400ms ease-in;
  
+}
+@keyframes fadeIn{
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+  
+
+@keyframes fadeOut{
+  0%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+  }
+}
 h1{
   text-align:center;
   font-weight:bold;
   color:#3bb08d;
   margin-left: 5%;
+  font-size:30px;
 }
 input[type="text"]{
   margin: 5px;
-  width: 15%;
-  font-size: 20px;
-  margin-right:15px;
+  width: 40%;
+  font-size: 18px;
+  margin-right:20px;
   border: 3px solid #ecb154;
   background-color: #faf0e4;
   color: #1a472a;
 }
 input[type="password"]{
   margin: 5px;
-  width: 15%;
-  font-size: 20px;
+  width: 40%;
+  font-size: 18px;
   margin-left:35px;
   border: 3px solid #ecb154;
   background-color: #faf0e4;
   color: #1a472a;
 
 }
+  input[type="email"]{
+    margin: 5px;
+    width: 40%;
+    font-size: 18px;
+    margin-left:35px;
+    border: 3px solid #ecb154;
+    background-color: #faf0e4;
+    color: #1a472a;
+
+  }
   input:focus{
     outline: none;
     border:3px solid #af7c39;
@@ -45,21 +94,59 @@ input[type="password"]{
   
 
 form{
+  
   padding:1rem;
-  margin:4px;
   text-align: center;
 
+}
+#epasta_kluda{
+  position: absolute;
+  left:47%;
+  font-style: oblique;
+  align-items:center;
+  color: red;
 }
 
 #saglabat{
   background-color: #00ffb3;
   font-weight:bold;
   margin-left:7%;
+  height:30px;
   width:100px;
   border-radius:5px;
+  cursor:pointer;
 }
-
+.Vistoklis{
+  position: fixed;
+  top:50%;
+  left:50%;
+  background:transparent url("./Bildes/vistoklis_veras.png") 0 0 no-repeat;
+  width:342px;
+  height:604px;
+  transform:translate(-64%,-51%);
+  animation: open 1s steps(7);
+ 
+  animation-fill-mode: forwards;
+  
+}
+.Vistoklis2{
+  position: fixed;
+  top:50%;
+  left:50%;
+  background:transparent url("./Bildes/vistoklis_veras.png") 0 0 no-repeat;
+  width:342px;
+  height:604px;
+  transform: translate(-65%,-41%);
+  animation: open 1s steps(7);
+  animation-fill-mode: forwards;
+}
+@keyframes open{
+  100%{
+    background-position:-2394px,0px;
+  }
+}
 #opciju_saraksts{
+  height:4%;
   position:absolute;
   left: 40%;
   top: 50%;
@@ -69,32 +156,42 @@ form{
   display: inline-block;
   /*border: 2px dashed #f00000*/
 }
-#varianti{
-  background-color: #00ffb3;
-  border-radius:10px;
+#varianti,#varianti1,#varianti2{
+  color:goldenrod;
+  background: url('./Bildes/vistoklis.png');
+  border:none;
+  background-size: 100%115%;
+  background-position: center;
+  background-repeat: no-repeat;
   font-size:20px;
   font-weight:bold;
-  z-index:10px;
-  box-shadow: 0px 0px 10px #000000;
   width:100%;
+  height:120%;
   margin:3px;
+  margin-bottom:20px;
+  cursor:pointer;
 
 }
-#varianti:active {
-  background-color: #00ffb3;
-  box-shadow: 0 5px #000000;
-  transform: translateY(4px);
+#varianti1:active {
+  color: #ffffff;
+}
+#varianti2:active {
+  color: #ffffff;
 }
 
 #registresanas_info,#ielogosanas_info,#info{
-  color:#1a472a;
-  margin-top:25rem;
-  margin-left:30rem;
   
-  width:50%;
+  color:#1a472a;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  
+  height:auto;
+  
   /* background-color: #00000059; */
-  background-image:url("./Bildes/scroll2.png");
-  background-size: 100%115%;
+  background-image:url("./Bildes/scroll.png");
+  background-size: 125%100%;
   background-position: center;
   background-repeat: no-repeat;
 
@@ -103,6 +200,10 @@ form{
 
   padding: 50px 0px 50px 0px;
 }
+#jautajums{
+  color:#3bb08d;
+  font-weight:300;
+}
 p,a{
   margin-top:10px;
 
@@ -110,6 +211,7 @@ p,a{
 p{
   margin-left:7%;
 }
+  
 a{
   color:#f44e34;
 }

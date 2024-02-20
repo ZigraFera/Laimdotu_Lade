@@ -12,17 +12,17 @@
 <body>
   <div id="ielogosanas_info">
     <br>
-      <h1>Ielogošanās</h1>
-      <form action="ielogosanas" method= "post">
+      <h1 class="fade-in">Ielogošanās</h1>
+      <form action="ielogosanas" method= "post"class="fade-in">
         <label for="lvards">{{teksti["lietotajvards"]}}</label>
         <input autocomplete="off" autofocus placeholder="Lietotājvārds" type="text" id="lvards" name="lvards"required><br>
         <label for="parole">{{teksti["parole"]}}</label>
         <input autocomplete="off" autofocus placeholder="Parole" type="password" id="parole" name="parole"required><br>
         <p><a href="/jauna_parole">Aizmirsi paroli?</a></p>
+        <p id="jautajums">Nav konta? <a href="/registresanas">Reģistrēties</a></p>
       <br>
         <input type = "submit" value = "Ielogoties" name = "submit" id="saglabat">
 
-       <p>Nav konta? <a href="/registresanas">Reģistrēties</a>.</p>
     </form>
   </div>
 

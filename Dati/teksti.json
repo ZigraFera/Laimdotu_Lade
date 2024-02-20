@@ -5,6 +5,7 @@
   },
   "registresanas":{
     "lietotajvards": "Lietotajvārds:",
+    "pasts": "E-pasts:",	
     "parole": "Parole:"
   },
   "ielogosanas":{
@@ -12,5 +13,15 @@
     "lietotajvards": "Lietotajvārds:",
     "parole": "Parole:"
 
+  },
+  "paroles_maina":{
+    
+    "jauna_parole": "Jaunā parole:",
+    "atkartot_paroli": "Apstiprināt paroli:"
+
+  },
+  "pieprasījums":{
+    "pasts": "E-pasts:",
+    "prasit_poga": "Pieprasīt mainīt paroli"
   }
 }

@@ -10,21 +10,15 @@
 
 </head>
 <body>
-<div id="registresanas_info"class="shows-up">
+<div id="info">
   <br>
-    <h1 class="fade-in">Reģistrēšanās</h1>
-      <form action="registresanas" method= "post" class="fade-in">
-      <label for="lvards">{{teksti["lietotajvards"]}}</label>
-      <input autocomplete="off" autofocus placeholder="Lietotājvārds" type="text" id="lvards" name="lvards"required><br><br>
+    <h1>vēlos mainīt paroli</h1>
+      <form action="pieprasijums_mainit_paroli" method= "post">
       <label for="epasts">{{teksti["pasts"]}}</label>
         <input autocomplete="off" autofocus placeholder="Tavs e-pasts" type="email" id="epasts" spellcheck="false" name="epasts" onkeyup="EpastaParbaude()" required><br>
         <span id="epasta_kluda"></span><br>
-      <label for="parole">{{teksti["parole"]}}</label>
-      <input autocomplete="off" autofocus placeholder="Parole" type="password" id="parole" name="parole"required><br>
-
-     <p>Jau ir izveidots konts? <a href="/ielogosanas">Ielogoties</a></p>
-    <br>
-      <input type = "submit" value = "Reģistrēties" name = "submit" id="saglabat">
+      <br>
+      <button type = "submit" value = "" name = "submit" id="saglabat">{{teksti["prasit_poga"]}}</button>
 
   </form>
 </div>
