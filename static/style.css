@@ -50,7 +50,7 @@ h1{
   font-weight:bold;
   color:#3bb08d;
   margin-left: 5%;
-  font-size:30px;
+  font-size:25px;
 }
 input[type="text"]{
   margin: 5px;
@@ -112,7 +112,7 @@ form{
   font-weight:bold;
   margin-left:7%;
   height:30px;
-  width:100px;
+  width:150px;
   border-radius:5px;
   cursor:pointer;
 }

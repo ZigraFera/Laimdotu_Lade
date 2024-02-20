@@ -17,6 +17,7 @@ def nolasit_teksta_datus(vietnes_vieta):
   elif vietnes_vieta == "paroles_maina":
     return vietnes_teksti.get("paroles_maina")
 
+
 app = Flask("app")
 
 
@@ -42,10 +43,11 @@ def ielogosanas():
 def paroles_maina():
   teksti = nolasit_teksta_datus("paroles_maina")
   return render_template("paroles_maina.html", teksti=teksti)
-  
-app.route("/pieprasijums_mainit_paroli", methods=["GET", "POST"])
+
+
+@app.route("/pieprasijums_mainit_paroli", methods=["GET", "POST"])
 def pieprasijums_mainit_paroli():
-  teksti = nolasit_teksta_datus("pieprasijums")
+  teksti = nolasit_teksta_datus("registresanas")
   return render_template("pieprasijums.html", teksti=teksti)
 
 

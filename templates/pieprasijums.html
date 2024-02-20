@@ -10,18 +10,20 @@
 
 </head>
 <body>
-<div id="info">
+  <div id="info">
   <br>
-    <h1>vēlos mainīt paroli</h1>
-      <form action="pieprasijums_mainit_paroli" method= "post">
+    <h1 class="fade-in">Vēlos Mainīt Paroli</h1>
+      <form action="pieprasijums_mainit_paroli" method= "post"class="fade-in">
       <label for="epasts">{{teksti["pasts"]}}</label>
         <input autocomplete="off" autofocus placeholder="Tavs e-pasts" type="email" id="epasts" spellcheck="false" name="epasts" onkeyup="EpastaParbaude()" required><br>
         <span id="epasta_kluda"></span><br>
+         <p><a href="/ielogosanas">Ielogoties</a></p>
       <br>
-      <button type = "submit" value = "" name = "submit" id="saglabat">{{teksti["prasit_poga"]}}</button>
-
+       
+      <input type = "submit" name = "submit" value="Pieprasīt mainīt paroli" id="saglabat">
+  
   </form>
-</div>
+  </div>
 
 <script src="../static/script.js"></script>
 </body>                    
