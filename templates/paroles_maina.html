@@ -14,15 +14,16 @@
   <br>
     <h1>Paroles Maiņa</h1>
       <form action="paroles_maina" method= "post">
-      <label for="epasts">{{teksti["pasts"]}}</label>
-        <input autocomplete="off" autofocus placeholder="Tavs e-pasts" type="email" id="epasts" spellcheck="false" name="epasts" onkeyup="EpastaParbaude()" required><br>
-        <span id="epasta_kluda"></span><br>
-      <label for="parole">{{teksti["jauna_parole"]}}</label>
-      <input autocomplete="off" autofocus placeholder="Parole" type="password" id="parole" name="parole"required><br>
+      <label for="epasts1">{{teksti["pasts"]}}</label>
+      <input autocomplete="off" autofocus placeholder="Tavs e-pasts" type="email" id="epasts1" spellcheck="false" name="epasts1" onkeyup="EpastaParbaude()" required><br>
+      <span id="epasta_kluda"></span><br>
+      <label for="j_parole">{{teksti["jauna_parole"]}}</label>
+      <input autocomplete="off" autofocus placeholder=" Jaunā Parole" type="password" id="j_parole" name="j_parole"required><br><br>
       <label for="apstiprinajums">{{teksti["atkartot_paroli"]}}</label>
-      <input autocomplete="off" autofocus placeholder="Parole" type="password" id="apstiprinajums" name="apstiprinajums"required><br>
+      <input autocomplete="off" autofocus placeholder=" Atkarto Paroli" type="password" id="apstiprinajums" name="apstiprinajums"required onkeyup="ParolesSakritiba()"><br>
+        <span id="apstiprinajums_kluda"></span>
     <br>
-      <input type = "submit" value = "Saglabat" name = "submit" id="saglabat">
+      <input type = "submit" value = "Mainīt Paroli" name = "submit" id="saglabat">
 
   </form>
 </div>

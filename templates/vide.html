@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../static/style.css" rel="stylesheet" type="text/css"/>
+   <link rel="icon" href="../static/Bildes/fight.ico" type="image/x-icon">
+  <title>Laimdotu Lade</title>
+
+</head>
+
+<body>  
+  <div id="lietotajs">
+    <br>
+    <h3>{{teksti2["lietotajvards"]}}{{info[0]}}</h3>
+    <p>{{teksti2["darbi"]}}{{info[2]}}</p>
+    <br>
+    <div id="darbibas_saraksts">
+        <a href="\jauns_darbs"><button type="button" id= "varianti">{{teksti2["pievienot_darbu"]}}</button></a>
+
+      <a href="\izlogoties"><button type="button" id= "varianti">{{teksti2["izlogoties_poga"]}}</button></a>
+    </div>
+      <button type="button" id= "anulet_kontu" onclick= "Bridinat()">{{teksti2["anulet_kontu"]}}</button>
+    </div>
+  </div>
+   <div id="lietotaju_sarkasts">
+     <h1> Lietotaju Kontakti:</h1>
+     <table>
+         <tr>
+             <td>
+                 <h4>{{teksti2["id"]}}</h4>
+             </td>
+             <td>
+                 <h4>{{teksti2["lietotajs"]}}</h4>
+             </td>
+
+             <td>
+                 <h4>{{teksti2["pasts"]}}</h4>
+             </td>
+             
+             
+         </tr>
+         {% for vertiba in saraksts %}
+         <tr>
+             <td>{{vertiba[0]}}</td>
+             <td>{{vertiba[1]}}</td>
+             <td>{{vertiba[2]}}</td>
+             
+         </tr>
+         {% endfor %}
+     </table>
+   </div>
+  <div id="darbu_laukums">
+     <h1>Darbu Saraksts:</h1>
+    <table>
+         <tr>
+             <td>
+                 <h4>{{teksti2["autors"]}}</h4>
+             </td>
+             <td>
+                 <h4>{{teksti2["darba_nosaukums"]}}</h4>
+             </td>
+             <td>
+                 <h4>{{teksti2["redzams"]}}</h4>
+             </td>
+             <td>
+                 <h4>{{teksti2["ladejams"]}}</h4>
+             </td>
+
+             <td>
+                 <h4>{{teksti2["veids"]}}</h4>
+             </td>
+
+             
+         </tr>
+         {% for vertiba in darbu_saraksts %}
+         <tr>
+             <td>{{vertiba[0]}}</td>
+             <td>{{vertiba[1]}}</td>
+             <td>{{vertiba[2]}}</td>
+             <td>{{vertiba[3]}}</td>
+           <td>
+               <button id="lejupladetPoga_{{vertiba[0]}}" onclick="lejupladet('{{vertiba[0]}}')" disabled>
+                   Lejuplādēt
+               </button>
+           </td>
+           <td>
+               <button id="deletePoga_{{vertiba[0]}}" onclick="deleteDarbs('{{vertiba[0]}}')" disabled>
+                   Dzēst
+               </button>
+           </td>
+         </tr>
+         {% endfor %}
+     </table>
+  </div>
+   
+  </div>
+  <div class="Aptauja" id="aptauja">
+    <div class="Galvene">Konta Anulēšāna!</div>
+    <div class="Saturs">
+      <p id="prasiba">Ievadi savu paroli, lai anulētu kontu!</p>
+      <input type="password" id="parole_dzes" placeholder="Parole">
+      <input type="button" id="apstiprina" value="Anulēt!" onclick="Apstiprinat()">
+      <input type="button" id="noliedz" value="Nē, pārdomāju!" onclick="Noliegt()">
+    </div>
+  </div>
+  <div id="parklaj"></div>
+  <script src="../static/script.js"	></script>
+  
+ 
+</body>                    
+</html>

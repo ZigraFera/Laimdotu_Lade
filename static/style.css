@@ -35,7 +35,17 @@ body {
     opacity:1;
   }
 }
+.Laukums{
+  background: #faf0e4;
+  width: 50%;
+  height:50%;
+  border-radius: 5px;
+  position: fixed;
+  border: 3px solid #ecb154;
+  background-color: #faf0e4;
+  transform:translate(50%,50%);
   
+}
 
 @keyframes fadeOut{
   0%{
@@ -52,54 +62,130 @@ h1{
   margin-left: 5%;
   font-size:25px;
 }
+h3{
+  text-align:left;
+  font-weight:bold;
+  color:#3bb08d;
+  margin-left: 5%;
+  font-size:25px;
+}
 input[type="text"]{
-  margin: 5px;
   width: 40%;
   font-size: 18px;
-  margin-right:20px;
   border: 3px solid #ecb154;
   background-color: #faf0e4;
   color: #1a472a;
 }
 input[type="password"]{
-  margin: 5px;
+  margin-left: 59px;
   width: 40%;
   font-size: 18px;
-  margin-left:35px;
+ 
   border: 3px solid #ecb154;
   background-color: #faf0e4;
   color: #1a472a;
 
 }
-  input[type="email"]{
-    margin: 5px;
-    width: 40%;
-    font-size: 18px;
-    margin-left:35px;
-    border: 3px solid #ecb154;
-    background-color: #faf0e4;
-    color: #1a472a;
+input[type="email"]{
+  margin-left: 50px;
+  width: 40%;
+  font-size: 18px;
+  border: 3px solid #ecb154;
+  background-color: #faf0e4;
+  color: #1a472a;
 
-  }
-  input:focus{
-    outline: none;
-    border:3px solid #af7c39;
-    
-    
-  }
-  label{
-    font-weight: bold;
-    color: #3bb08d;
-  }
+}
+input:focus{
+  outline: none;
+  border:3px solid #af7c39;
+  
+  
+}
+label{
+  font-weight: bold;
+  color: #3bb08d;
+}
   
 
 form{
-  
+  margin:1rem;
   padding:1rem;
   text-align: center;
 
 }
-#epasta_kluda{
+.Darbs{
+  margin:1rem;
+  padding:1rem;
+  text-align: left;
+}
+input[type="button"]{
+  border: 4px solid #ecb154;
+  background-color: #d10000;
+  color: #feffad;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 190%;
+  width: 350px;
+  height: 80px;
+  margin-bottom: 5px;
+  cursor: grab;
+  
+}
+table,
+th,
+td {
+    margin:1rem;
+    border: 1px solid #ecb154;
+    
+}
+table{
+  position:fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
+  width: 50%;
+  
+  color:#119721;
+}
+#apstiprina,
+#noliedz {
+  position: fixed;
+  display: inline-block;
+  width: 242px;
+  height: 68px;
+}
+#apstiprina {
+  left: 50%;
+  top: 60%;
+  
+}
+
+#noliedz {
+  left: 10%;
+  top: 60%;
+}
+
+#uzvards{
+  margin-left:45px;
+}
+#vards{
+  margin-left:62px;
+}
+#lvards{
+  margin-left:15px;
+}
+#apstiprinajums{
+  margin-left:10px;
+}
+#j_parole{
+  margin-left:45px;
+  
+}
+#epasts1{
+  margin-left:81px;
+}
+#epasta_kluda,#lvards_kluda,#apstiprinajums_kluda{
   position: absolute;
   left:47%;
   font-style: oblique;
@@ -116,6 +202,7 @@ form{
   border-radius:5px;
   cursor:pointer;
 }
+
 .Vistoklis{
   position: fixed;
   top:50%;
@@ -140,11 +227,53 @@ form{
   animation: open 1s steps(7);
   animation-fill-mode: forwards;
 }
+.Ievietosanas_vieta{
+  margin-left:50px;
+  width:40%;
+  font-size:18px;
+}
+ 
+  
+::-webkit-file-upload-button{
+  color:#ffffff;
+  background-color:#119721;
+  border-radius:5px;
+  font-style:italic;
+}
+.Aptauja {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 2px solid #ecb154;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: #faf0e4;
+  width: 700px;
+  height: 580px;
+  max-height: 80%;
+  max-width: 80%;
+}
+
+.Aptauja.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.Galvene {
+  padding-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #1a472a;
+  font-size: 45px;
+}
+
 @keyframes open{
   100%{
     background-position:-2394px,0px;
   }
 }
+
 #opciju_saraksts{
   height:4%;
   position:absolute;
@@ -156,7 +285,7 @@ form{
   display: inline-block;
   /*border: 2px dashed #f00000*/
 }
-#varianti,#varianti1,#varianti2{
+#varianti1,#varianti2{
   color:goldenrod;
   background: url('./Bildes/vistoklis.png');
   border:none;
@@ -200,9 +329,146 @@ form{
 
   padding: 50px 0px 50px 0px;
 }
-#jautajums{
+#parole_dzes{
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-65%,-50%);
+  width:40%;
+  height:auto;
+  font-size:20px;
+  border: 3px solid #ecb154;
+  background-color: #faf0e4;
+  
+}
+#varianti{
+  background-color: #00ffb3;
+  height:30;
+  border-radius:10px;
+  font-size:15px;
+  font-weight:bold;
+  z-index:10px;
+  box-shadow: 0px 0px 10px #000000;
+  width:100%;
+  margin:3px;
+  cursor: pointer;
+
+  
+#varianti:active {
+  background-color: #00ffb3;
+  box-shadow: 0 5px #000000;
+  transform: translateY(4px);
+}
+
+}
+#darbibas_saraksts{
+  display:inline-flex;
+  align-text:center;
+  gap:10px;
+  padding:10px;
+}
+#lietotajs{
+  position:absolute;
   color:#3bb08d;
-  font-weight:300;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:20rem;
+  margin-left:5rem;
+  transform: translate(0%, 50%);
+  width:23%;
+  height:20%;
+  border: 3px solid #ecb154;
+  border-radius:5px;
+  background-color: #faf0e4;
+  text-decoration: none;
+
+}
+#lietotaju_sarkasts{
+  position:fixed;
+  color:#3bb08d;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:20rem;
+
+  left:75%;
+  transform: translate(0%, 50%);
+  width:20%;
+  height:40%;
+  border: 3px solid #ecb154;
+  background-color: #faf0e4;
+  border-radius:5px;
+  text-decoration: none;
+}
+#darbu_laukums{
+  position:fixed;
+  color:#3bb08d;
+  font-size:20px;
+  font-weight:bold;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:40%;
+  height:70%;
+  border-radius:5px;
+  border: 3px solid #ecb154;
+  background-color: #faf0e4;
+ 
+  text-decoration: none;
+}
+
+
+#failu_laukums{
+  position:fixed;
+  color:#3bb08d;
+  font-size:20px;
+  font-weight:bold;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:58%;
+  height:63%;
+  border-radius:5px;
+  border: 3px solid #ecb154;
+  background-color: #faf0e4;
+}
+
+#anulet_kontu{
+  background-color: #ff0000;
+  height:30;
+  font-size:15px;
+  font-weight:bold;
+  z-index:10px;
+  box-shadow: 0px 0px 10px #000000;
+  margin:3px;
+  cursor:pointer;
+}
+#anulet_kontu:active {
+  background-color: #ff0000;
+  box-shadow: 0 5px #000000;
+  transform: translateY(4px);
+}
+#parklaj {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  transition: 200ms ease-in-out;
+  pointer-events: none;
+}
+
+#parklaj.active {
+  opacity: 1;
+  pointer-events: all;
+}
+#prasiba{
+  padding-top: 57px;
+  text-align: center;
+  color: #6c3109;
+  font-size: 39px;
+  font-weight: bold;
 }
 p,a{
   margin-top:10px;

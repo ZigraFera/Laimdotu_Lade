@@ -9,26 +9,33 @@
   <title>Laumdotu Lāde</title>
 
 </head>
+  
 <body>
-<div id="registresanas_info"class="shows-up">
-  <br>
-    <h1 class="fade-in">Reģistrēšanās</h1>
-      <form action="registresanas" method= "post" class="fade-in">
-      <label for="lvards">{{teksti["lietotajvards"]}}</label>
-      <input autocomplete="off" autofocus placeholder="Lietotājvārds" type="text" id="lvards" name="lvards"required><br><br>
-      <label for="epasts">{{teksti["pasts"]}}</label>
-        <input autocomplete="off" autofocus placeholder="Tavs e-pasts" type="email" id="epasts" spellcheck="false" name="epasts" onkeyup="EpastaParbaude()" required><br>
-        <span id="epasta_kluda"></span><br>
-      <label for="parole">{{teksti["parole"]}}</label>
-      <input autocomplete="off" autofocus placeholder="Parole" type="password" id="parole" name="parole"required><br>
-
-     <p>Jau ir izveidots konts? <a href="/ielogosanas">Ielogoties</a></p>
+  <div id="registresanas_info"class="shows-up">
     <br>
-      <input type = "submit" value = "Reģistrēties" name = "submit" id="saglabat">
+      <h1 class="fade-in">Reģistrēšanās</h1>
+        <form action="registresanas" method= "post" class="fade-in">
+        <label for="lvards">{{teksti["lietotajvards"]}}</label>
+        <input autocomplete="off" autofocus placeholder="Lietotājvārds" type="text" id="lvards" name="lvards" required><br>
+          <span id="lvards_kluda"></span><br>
+        <label for="vards">{{teksti["vards"]}}</label>
+        <input autocomplete="off" autofocus placeholder="Vārds" type="text" id="vards" name="vards"required><br><br>
+        <label for="uzvards">{{teksti["uzvards"]}}</label>
+        <input autocomplete="off" autofocus placeholder="Uzvārds" type="text" id="uzvards" name="uzvards"required><br><br>
+        <label for="epasts">{{teksti["pasts"]}}</label>
+        <input autocomplete="off" autofocus placeholder="Tavs e-pasts" type="email" id="epasts" spellcheck="false" name="epasts" onkeyup="EpastaParbaude()" required><br>
+          <span id="epasta_kluda"></span><br>
+        <label for="parole">{{teksti["parole"]}}</label>
+        <input autocomplete="off" autofocus placeholder="Parole" type="password" id="parole" name="parole"required><br>
+  
+       <p>Jau ir izveidots konts? <a href="/ielogosanas">Ielogoties</a></p>
+      <br>
+        <input type = "submit" value = "Reģistrēties" name = "submit" id="saglabat">
+          <label id="kluda">{{kluda}}</label>
+  
+    </form>
+  </div>
 
-  </form>
-</div>
-
-<script src="../static/script.js"></script>
+  <script src="../static/script.js"></script>
 </body>                    
 </html>

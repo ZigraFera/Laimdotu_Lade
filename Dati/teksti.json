@@ -5,6 +5,8 @@
   },
   "registresanas":{
     "lietotajvards": "Lietotajvārds:",
+    "vards": "Vārds:",
+    "uzvards": "Uzvārds:",
     "pasts": "E-pasts:",	
     "parole": "Parole:"
   },
@@ -14,11 +16,35 @@
     "parole": "Parole:"
 
   },
-  "paroles_maina":{
+
+  "vide":{
+
+    "lietotajvards": "Lietotajvārds:",
+    "lietotajs": "Lietotajvārds",
+    "darbi": "Ievietoti Darbi:",
+    "id": "ID",
+    "pievienot_darbu": "Pievienot Darbu",
+    "filtrs": "Filtrs",
+    "filtrs_poga": "Filtrēt",
+    "veids": "Veids",
+    "redzams": "Redzams",
+    "ladejams": "Ladejams",
+    "darba_nosaukums": "Nosaukums",
+    "autors": "Autors",
+    "pasts": "e-pasts",
+    "izlogoties_poga": "Izlogoties",
+    "anulet_kontu": "Anulēt kontu"
+  
     
+    
+
+  },
+  "paroles_maina":{
+    "pasts": "E-pasts:",
     "jauna_parole": "Jaunā parole:",
     "atkartot_paroli": "Apstiprināt paroli:"
 
   }
+  
  
 }

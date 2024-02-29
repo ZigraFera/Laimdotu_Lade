@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../static/style.css" rel="stylesheet" type="text/css"/>
+   <link rel="icon" href="../static/Bildes/fight.ico" type="image/x-icon">
+  <title>Laimdotu Lade</title>
+
+</head>
+
+<body>
+   <div id="failu_laukums">
+   <h1>Jauna darba iestatījumi</h1>
+     <form action="/jauns_darbs" method="post"enctype="multipart/form-data" 
+ accept =" audio/*, video/*, image/*,lsx,.xls,.doc, .docx,.ppt, .pptx,.pdf"class="Darbs">
+       <input type="file" name="darba_fails" id="darba_fails" class ="Ievietosanas_vieta"required>
+        
+         <input type="hidden" id = "drosiba_tips1" value= "{{piekluves[0][1]}}">
+         <input type="hidden" id = "drosiba_tips2" value= "{{piekluves[1][1]}}">
+         <input type="hidden" id = "drosiba_tips3" value= "{{piekluves[2][1]}}">
+         <label for="drosibas_tips">Drošības tips:</label>
+       
+           <select id="drosibas_tips" name="drosibas_tips" required onchange="ParaditAprakstu()">
+             <option value=""></option>
+           {%for piekluve in piekluves%}
+             
+             <option value="{{piekluve[0] }}">{{piekluve[0] }}</option>
+              {%endfor%}
+         </select><br>
+       <p id="apraksts"></p>
+         <br><label for="redzamiba">Darba redzamības iespejas:</label><br>
+       <br>
+         <label for="redzamiba">Redzams:</label>
+         <input type="radio" id="redzams" name="redzamiba" value="redzams"required>
+       <br>
+         <label for="redzamiba">Slepts:</label>
+         <input type="radio" id="slepts" name="redzamiba" value="slepts">
+         <br>
+         <br>
+          <label for="lejupladejamiba">Lejuplādējams citiem:</label>
+       <br>
+          <label for="lejupladejamiba">Ladejams:</label>
+          <input type="radio" id="ladejams" name="lejupladejamiba" value="ladejams"required>
+        <br>
+          <label for="ladejamiba">Neladejams:</label>
+          <input type="radio" id="neladejams" name="lejupladejamiba" value="neladejams">
+          <br>     
+             <label for="konkrets_lietotajs">Konkrēts lietotājs:</label>
+             <input type="checkbox" id="konkrets_lietotajs" name="konkrets_lietotajs" value="konkrets_lietotajs" onchange="IedarbinatLietotajs()">
+             <br>
+             <label for="lietotajs_izvele">Izvēlies lietotāju:</label>
+             <select id="lietotajs_izvele" name="lietotajs_izvele" disabled>
+
+                 {% for lietotajs in lietotaji %}
+                     <option value="{{ lietotajs[0] }}">
+                         {{ lietotajs[0] }} {{ lietotajs[1] }}
+                     </option>
+                 {% endfor %}
+           </select>
+         
+           </select>
+         <br>
+         <br>
+         <br>
+         <br>
+           <input type = "submit" value = "Ievietot Darbu Lādē" name = "submit"id="saglabat">
+         <a href = "/vide"><button type = "button" id="saglabat">Atpakaļ</button></a>
+     </form>
+    
+   </div>
+  
+  
+  <script src="../static/script.js"></script>
+ 
+</body>                    
+</html>
