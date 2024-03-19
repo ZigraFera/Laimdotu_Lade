@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../static/style.css" rel="stylesheet" type="text/css"/>
-  <link rel="icon" href="../static/Bildes/.ico" type="image/x-icon">
+  <link rel="icon" href="../static/Bildes/gerbonis.ico" type="image/x-icon">
   <title>Laumdotu Lāde</title>
 
 </head>
@@ -13,6 +13,7 @@
   <div id="ielogosanas_info">
     <br>
       <h1 class="fade-in">Ielogošanās</h1>
+      
       <form action="ielogosanas" method= "post"class="fade-in">
         <label for="lvards">{{teksti["lietotajvards"]}}</label>
         <input autocomplete="off" autofocus placeholder="Lietotājvārds" type="text" id="lvards" name="lvards"required><br><br>
@@ -21,6 +22,7 @@
         <p><a href="/paroles_maina">Aizmirsi paroli?</a></p>
         <p id="jautajums">Nav konta? <a href="/registresanas">Reģistrēties</a></p>
       <br>
+        <label id="kluda">{{kluda}}</label>
         <input type = "submit" value = "Ielogoties" name = "submit" id="saglabat">
 
     </form>

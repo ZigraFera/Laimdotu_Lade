@@ -56,11 +56,25 @@ body {
   }
 }
 h1{
+
   text-align:center;
   font-weight:bold;
   color:#3bb08d;
   margin-left: 5%;
   font-size:25px;
+  
+}
+#virstrakti1{
+  background-color: #faf0e4;
+  width:20%;
+  border-radius: 5px;
+  transform: translate(170%, 740%);
+}
+#virstrakti2{
+  background-color: #faf0e4;
+  width:20%;
+  border-radius: 5px;
+  transform: translate(350%, 1690%);
 }
 h3{
   text-align:left;
@@ -132,22 +146,64 @@ input[type="button"]{
   
 }
 table,
-th,
 td {
     margin:1rem;
     border: 1px solid #ecb154;
+    text-align:center;
     
 }
+
+
+th{
+  
+  border: none;
+ 
+}
 table{
-  position:fixed;
-  top: 15%;
+ 
+  /* position:fixed;
+  top: 17%;
   left: 50%;
   transform: translate(-50%, -50%);
+  word-wrap: break-word;
  
-  width: 50%;
+  width: 50%; */
+  margin: 1rem;
+  border: 1px solid #ecb154;
+  text-align: center;
+  color: #119721;
+  
   
   color:#119721;
 }
+
+
+/* table {
+  overflow: scroll;
+  display: block;
+  height: 120px;
+}
+thead>tr {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  background-color: white;
+}
+tbody>tr:nth-of-type(1) {
+  margin-top: 16px;
+}
+tbody tr {
+  display: block;
+}
+td,
+th {
+  width: 70px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+} */
 #apstiprina,
 #noliedz {
   position: fixed;
@@ -185,7 +241,7 @@ table{
 #epasts1{
   margin-left:81px;
 }
-#epasta_kluda,#lvards_kluda,#apstiprinajums_kluda{
+#epasta_kluda,#lvards_kluda,#apstiprinajums_kluda, #kluda{
   position: absolute;
   left:47%;
   font-style: oblique;
@@ -375,7 +431,7 @@ table{
   margin-top:20rem;
   margin-left:5rem;
   transform: translate(0%, 50%);
-  width:23%;
+  width:19%;
   height:20%;
   border: 3px solid #ecb154;
   border-radius:5px;
@@ -400,21 +456,34 @@ table{
   text-decoration: none;
 }
 #darbu_laukums{
-  position:fixed;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  max-height:70vh; 
   color:#3bb08d;
   font-size:20px;
   font-weight:bold;
+  background-color: #faf0e4;
+  border-radius:5px;
+}
+#iespejadzest{
+  border: none;
+}
+  /* position:fixed;
+ 
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
-  width:40%;
+  width:48%;
   height:70%;
-  border-radius:5px;
+ 
   border: 3px solid #ecb154;
-  background-color: #faf0e4;
+  
  
   text-decoration: none;
-}
+}  */
 
 
 #failu_laukums{
@@ -446,6 +515,43 @@ table{
   background-color: #ff0000;
   box-shadow: 0 5px #000000;
   transform: translateY(4px);
+}
+#dzest{
+  background-color: #ff0000;
+  height:30;
+  margin:3px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+#ladet{
+  background-color: #20d52c;
+  height:30;
+  margin:3px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+#skatit{
+  background-color: #f7d426;
+  height:30;
+  margin:3px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#ladet:hover {
+   opacity:0.5;
+   
+}
+#skatit:hover {
+   opacity:0.5;
+
+}
+#dzest:hover {
+   opacity:0.5;
+
 }
 #parklaj {
   position: fixed;

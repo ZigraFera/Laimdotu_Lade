@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../static/style.css" rel="stylesheet" type="text/css"/>
-   <link rel="icon" href="../static/Bildes/fight.ico" type="image/x-icon">
+   <link rel="icon" href="../static/Bildes/gerbonis.ico" type="image/x-icon">
   <title>Laimdotu Lade</title>
 
 </head>
@@ -23,13 +23,13 @@
       <button type="button" id= "anulet_kontu" onclick= "Bridinat()">{{teksti2["anulet_kontu"]}}</button>
     </div>
   </div>
+   
    <div id="lietotaju_sarkasts">
-     <h1> Lietotaju Kontakti:</h1>
      <table>
          <tr>
-             <td>
+             <!-- <td>
                  <h4>{{teksti2["id"]}}</h4>
-             </td>
+             </td> -->
              <td>
                  <h4>{{teksti2["lietotajs"]}}</h4>
              </td>
@@ -42,56 +42,109 @@
          </tr>
          {% for vertiba in saraksts %}
          <tr>
-             <td>{{vertiba[0]}}</td>
+             <!-- <td>{{vertiba[0]}}</td> -->
              <td>{{vertiba[1]}}</td>
              <td>{{vertiba[2]}}</td>
+             
              
          </tr>
          {% endfor %}
      </table>
    </div>
+     
   <div id="darbu_laukums">
-     <h1>Darbu Saraksts:</h1>
+      
     <table>
-         <tr>
-             <td>
-                 <h4>{{teksti2["autors"]}}</h4>
-             </td>
-             <td>
-                 <h4>{{teksti2["darba_nosaukums"]}}</h4>
-             </td>
-             <td>
-                 <h4>{{teksti2["redzams"]}}</h4>
-             </td>
-             <td>
-                 <h4>{{teksti2["ladejams"]}}</h4>
-             </td>
-
-             <td>
-                 <h4>{{teksti2["veids"]}}</h4>
-             </td>
-
-             
-         </tr>
-         {% for vertiba in darbu_saraksts %}
-         <tr>
-             <td>{{vertiba[0]}}</td>
-             <td>{{vertiba[1]}}</td>
-             <td>{{vertiba[2]}}</td>
-             <td>{{vertiba[3]}}</td>
-           <td>
-               <button id="lejupladetPoga_{{vertiba[0]}}" onclick="lejupladet('{{vertiba[0]}}')" disabled>
-                   Lejuplādēt
-               </button>
-           </td>
-           <td>
-               <button id="deletePoga_{{vertiba[0]}}" onclick="deleteDarbs('{{vertiba[0]}}')" disabled>
-                   Dzēst
-               </button>
-           </td>
-         </tr>
-         {% endfor %}
-     </table>
+        <tr>
+            <td>
+                <h4>{{teksti2["autors"]}}</h4>
+            </td>
+            <td>
+                <h4>{{teksti2["darba_nosaukums"]}}</h4>
+            </td>
+            <td>
+                <h4>{{teksti2["redzams"]}}</h4>
+            </td>
+            <td>
+                <h4>{{teksti2["ladejams"]}}</h4>
+            </td>
+            
+        </tr>
+        <tr><th colspan="7">Privāti</th></tr>
+        {% for darbs in privatais_darbu_saraksts %}
+          <tr>
+            <td>{{ darbs[1] }}</td>
+            <td>{{ darbs[2] }}</td>
+            {% if darbs[1] == lietotajs %} 
+              <td>
+                <form method="get"action="{{ url_for('skatit_darbs', darbs_ID=darbs[0]) }}">
+                  <button id="skatit" type="submit">Apskatīt</button>
+                </form>
+              </td>
+            {% else %}
+            <td></td> 
+            {% endif %}
+            {% if darbs[1] == lietotajs %} 
+            <td>
+              <form method="get"action="{{ url_for('ladet_darbs', darbs_ID=darbs[0]) }}">
+                <button id="ladet" type="submit">Lejupladēt</button>
+              </form>
+            </td>
+            {% else %}
+            <td></td> 
+            {% endif %}
+           
+            {% if darbs[1] == lietotajs%} 
+            <td>
+              <form method="post" action="{{ url_for('dzest_darbs', darbs_ID=darbs[0]) }}">
+                <button id="dzest" type="submit">Dzēst</button>
+              </form>
+            </td>
+            {% else %}
+            <td id="iespejadzest"></td> 
+            {% endif %}
+          </tr>
+        {% endfor %}
+        <tr><th colspan="7">Publiski</th></tr>
+        <!-- Display public works of other users -->
+        {% for darbs in publiskais_darbu_saraksts %}
+          <tr>
+            <td>{{ info[0] }}</td>
+            <td>{{ darbs[2] }}</td>
+            
+            {% if darbs[3] == 'true'%} 
+            <td>
+              <form method="get"action="{{ url_for('skatit_darbs', darbs_ID=darbs[0]) }}">
+                <button id="skatit" type="submit">Apskatīt</button>
+              </form>
+            </td>
+            {% else %}
+            <td></td> 
+            {% endif %}
+            {% if darbs[4] == 'true' %} 
+            <td>
+              <form method="get"action="{{ url_for('ladet_darbs', darbs_ID=darbs[0]) }}">
+                <button id="ladet" type="submit">Lejupladēt</button></form>
+            </td>
+                
+              
+            </td>
+            {% else %}
+            <td></td> 
+            {% endif %}
+            
+            {% if darbs[1] == lietotajs %} 
+            <td>
+              <form method="post" action="{{ url_for('dzest_darbs', darbs_ID=darbs[0]) }}">
+                <button id="dzest" type="submit">Dzēst</button>
+              </form>
+            </td>
+            {% else %}
+            <td id="iespejadzest"></td> 
+            {% endif %}
+          </tr>
+        {% endfor %}
+    </table>
   </div>
    
   </div>
@@ -99,13 +152,16 @@
     <div class="Galvene">Konta Anulēšāna!</div>
     <div class="Saturs">
       <p id="prasiba">Ievadi savu paroli, lai anulētu kontu!</p>
-      <input type="password" id="parole_dzes" placeholder="Parole">
-      <input type="button" id="apstiprina" value="Anulēt!" onclick="Apstiprinat()">
-      <input type="button" id="noliedz" value="Nē, pārdomāju!" onclick="Noliegt()">
+      <form action="/anulet_kontu" method="post">
+        <input type="password" id="parole_dzes" name="parole_dzes" placeholder="Parole"autocomplete="off" required>
+        <input type="submit" id="apstiprina" value="Anulēt!" onclick="Apstiprinat()">
+        <input type="button" id="noliedz" value="Nē, pārdomāju!" onclick="Noliegt()">
+      </form>
     </div>
   </div>
   <div id="parklaj"></div>
   <script src="../static/script.js"	></script>
+  <!-- <script src="../static/view.js"	></script> -->
   
  
 </body>                    

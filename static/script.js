@@ -7,6 +7,13 @@ let j_parole = document.getElementById("j_parole");
 let apstiprinajums = document.getElementById("apstiprinajums");
 let apstiprinajums_kluda = document.getElementById("apstiprinajums_kluda");
 let elements = document.getElementById("animacija");
+let redzlab = document.getElementById("r");
+let sleplab = document.getElementById("s");
+let ladejlab = document.getElementById("l");
+let neladejlab = document.getElementById("nl");
+let konk = document.getElementById("konkrets");
+let izv = document.getElementById("izv");
+let ele = document.getElementsByName("redz");
 let registret = false;
 let ielogot = false;
 const Lietotajvardi = [];
@@ -117,7 +124,6 @@ function Apstiprinat(){
   const parklajs = document.getElementById("parklaj");
   aptauja.classList.remove("active"); // pievieno klasi
   parklajs.classList.remove("active");
-  win.location.href = "/anulet_kontu";
 }
 function Noliegt() {
   const aptauja = document.getElementById("aptauja");
@@ -125,22 +131,204 @@ function Noliegt() {
   aptauja.classList.remove("active"); // pievieno klasi
   parklajs.classList.remove("active");
 }
+function JaunaDarbaStadija(){
+  let konkretsLietotajsCheckbox = document.getElementById("konkrets_lietotajs");
+  let lietotajsSelect = document.getElementById("lietotajs_izvele");
+  let redzamiba = document.getElementById("redzams")
+  let slepts = document.getElementById("slepts")
+  let ladejams = document.getElementById("lade")
+  let neladejams = document.getElementById("nelade")
+  redzlab.style.display = "none";
+  redzamiba.style.visibility = "hidden";
+  sleplab.style.display = "none";
+  slepts.style.visibility = "hidden";
+  ladejlab.style.display = "none";
+  ladejams.style.visibility = "hidden";
+  neladejams.style.display = "none";
+  neladejlab.style.visibility = "hidden";
+  // konk.style.display = "none";
+  // konkretsLietotajsCheckbox.style.visibility = "hidden";
+  // izv.style.display = "none";
+  // lietotajsSelect.style.visibility = "hidden";
+  document.getElementById("redzams_1").value = ""
+  
+}
 function ParaditAprakstu(){
   let drosibasTipsSelect = document.getElementById("drosibas_tips").selectedIndex;
- 
+  let konkretsLietotajsCheckbox = document.getElementById("konkrets_lietotajs");
+  let lietotajsSelect = document.getElementById("lietotajs_izvele");
+  let redzamiba = document.getElementById("redzams");
+  let slepts = document.getElementById("slepts");
+  let ladejams = document.getElementById("lade");
+  let neladejams = document.getElementById("nelade");
+  
+  document.getElementById("redzams_1").value = "";
+  
+  
   switch(drosibasTipsSelect){
+      
     case 0:
+      for(let i=0;i<ele.length;i++)
+        ele[i].checked = false;
+      document.getElementById("redzams_1").value = "";
+      document.getElementById("ladejams_1").value = "";
+      redzlab.style.display = "none";
+      redzamiba.style.visibility = "hidden";
+      sleplab.style.display = "none";
+      slepts.style.visibility = "hidden";
+      ladejlab.style.display = "none";
+      ladejams.style.visibility = "hidden";
+      neladejams.style.display = "none";
+      neladejlab.style.visibility = "hidden";
+      konk.style.display = "none";
+      konkretsLietotajsCheckbox.style.visibility = "hidden";
+      izv.style.display = "none";
+      lietotajsSelect.style.visibility = "hidden";  
       document.getElementById("apraksts").innerHTML= "";
       break;
+      
     case 1:
       document.getElementById("apraksts").innerHTML= document.getElementById("drosiba_tips1").value;
+      slepts.checked = true;
+      neladejams.checked = true;
+      redzlab.style.display = "none";
+      redzamiba.style.visibility = "hidden";
+      sleplab.style.display = "";
+      slepts.style.visibility = "visible";
+      ladejlab.style.display = "none";
+      ladejams.style.visibility = "hidden";
+      neladejams.style.display = "";
+      neladejlab.style.visibility = "visible";
+      // konk.style.display = "none";
+      // konkretsLietotajsCheckbox.style.visibility = "hidden";
+      // izv.style.display = "none";
+      // lietotajsSelect.style.visibility = "hidden";
+      document.getElementById("redzams_1").value = "false";
+      document.getElementById("ladejams_1").value = "false";
+      
+      // if (document.getElementById("redzams_1").value== "true") {
+      //   console.log("Selected: Redzams");
+      //   // Additional logic if Redzams is selected
+      // } else if (document.getElementById("redzams_1").value== "false") {
+      //   console.log("Selected: Neredzams");
+      //   // Additional logic if Neredzams is selected
+      // }
+      // else{
+      //   console.log("Selected: none");
+      // }
       break;
     case 2:
+      
+      redzamiba.checked = true;
+      ladejams.checked = true;
+      redzlab.style.display = "";
+      redzamiba.style.visibility = "visible";
+      sleplab.style.display = "none";
+      slepts.style.visibility = "hidden";
+      ladejlab.style.display = "";
+      ladejams.style.visibility = "visible";
+      neladejams.style.display = "none";
+      neladejlab.style.visibility = "hidden";
+      //konk.style.display = "none";
+      //konkretsLietotajsCheckbox.style.visibility = "hidden";
+      //izv.style.display = "none";
+      //lietotajsSelect.style.visibility = "hidden";
       document.getElementById("apraksts").innerHTML= document.getElementById("drosiba_tips2").value;
+      
+   
+      
+      if (document.getElementById("redzams_1").value== "true") {
+        console.log("Selected: Redzams");
+        // Additional logic if Redzams is selected
+      } else if (document.getElementById("redzams_1").value== "false") {
+        console.log("Selected: Neredzams");
+        // Additional logic if Neredzams is selected
+      }
+      else{
+        console.log("Selected: none");
+      }
       break;
-      case 3:
-      document.getElementById("apraksts").innerHTML= document.getElementById("drosiba_tips3").value;
-      break;
+      // case 3: 
+        // document.getElementById("redzams_1").value = "";
+        // document.getElementById("ladejams_1").value = "";
+        // document.getElementById("apraksts").innerHTML= document.getElementById("drosiba_tips2").value;
+  
+        // if(document.getElementById("redzams_1").value== "" && document.getElementById("ladejams_1").value== "")
+        //   slepts.chacked = "false";
+        //   redzamiba.chacked = "false";
+        //   ladejams.chacked = "false";
+        //   neladejams.chacked = "false";
+        // redzlab.style.display = "";
+        // redzamiba.style.visibility = "visible";
+        // sleplab.style.display = "";
+        // slepts.style.visibility = "visible";
+        // ladejlab.style.display = "";
+        // ladejams.style.visibility = "visible";
+        // neladejams.style.display = "";
+        // neladejlab.style.visibility = "visible";
+        // konk.style.display = "";
+        // konkretsLietotajsCheckbox.style.visibility = "visible";
+        // izv.style.display = "";
+        // lietotajsSelect.style.visibility = "visible";
+      //   redzlab.style.display = "";
+      //   redzamiba.style.visibility = "visible";
+      //   sleplab.style.display = "none";
+      //   slepts.style.visibility = "hidden";
+      //   ladejlab.style.display = "";
+      //   ladejams.style.visibility = "visible";
+      //   neladejams.style.display = "none";
+      //   neladejlab.style.visibility = "hidden";
+      //   konk.style.display = "none";
+      //   konkretsLietotajsCheckbox.style.visibility = "hidden";
+      //   izv.style.display = "none";
+      //   lietotajsSelect.style.visibility = "hidden";
+      //   document.getElementById("apraksts").innerHTML= document.getElementById("drosiba_tips3").value;
+      //   if (redzamiba.chacked == true&&slepts.chacked == false) {
+      //     console.log("Selected: Redzams");
+      //     document.getElementById("redzams_1").value = "true";
+      //   }
+      //   else if (slepts.chacked == true && redzamiba.chacked == false){
+      //     console.log("Selected: neredzams");
+      //     document.getElementById("redzams_1").value = "false";
+      //   }
+      //   if (ladejams.chacked == ladejams&&neladejams.chacked == false) {
+      //     console.log("Selected: Redzams");
+      //     document.getElementById("ladejams_1").value = "true";
+      //   }
+      //   else if (neladejams.chacked == true && ladejams.chacked == false){
+      //     console.log("Selected: neladejams");
+      //     document.getElementById("ladejams_1").value = "false";
+      //   }
+        
+      //   if (redzamiba.chacked == true) {
+      //     console.log("Selected: Redzams");
+      //     document.getElementById("redzams_1").value = "true";
+      //   } else if (slepts.chacked == true) {
+      //     console.log("Selected: Neredzams");
+      //     document.getElementById("redzams_1").value = "false";
+      //   }
+      //   else{
+      //     console.log("Selected: none");
+          
+      //   }
+        
+      //   break;
+     
+  }
+  if (redzamiba.checked == true && slepts.checked == false) {
+      console.log("Selected: Redzams");
+      document.getElementById("redzams_1").value = "true";
+  } else if (slepts.checked == true && redzamiba.checked == false) {
+      console.log("Selected: Neredzams");
+      document.getElementById("redzams_1").value = "false";
+  }
+
+  if (ladejams.checked == true && neladejams.checked == false) {
+      console.log("Selected: Lādējams");
+      document.getElementById("ladejams_1").value = "true";
+  } else if (neladejams.checked == true && ladejams.checked == false) {
+      console.log("Selected: Nelādējams");
+      document.getElementById("ladejams_1").value = "false";
   }
   // let paskaidrojumsElements = document.querySelectorAll(".Paskaidrojums");
 
@@ -156,6 +344,10 @@ function ParaditAprakstu(){
   //     selectedPaskaidrojumaElements.style.display = "block";
   // }
 }
+function Notirit() {
+  for(let i=0;i<ele.length;i++)
+    ele[i].checked = false;
+}
 function IedarbinatLietotajs(){
   let konkretsLietotajsCheckbox = document.getElementById("konkrets_lietotajs");
   let lietotajsSelect = document.getElementById("lietotajs_izvele");
@@ -166,4 +358,13 @@ function IedarbinatLietotajs(){
     lietotajsSelect.disabled = false;
   }
  
+}
+function PasaIzvele(redz,lade){
+  let redzamiba = document.getElementById("redzams");
+  let slepts = document.getElementById("slepts");
+  let ladejams = document.getElementById("ladejams");
+  let neladejams = document.getElementById("neladejams");
+  if(redzamiba.clicked == true)
+    rezamiba.checked = true;
+
 }
