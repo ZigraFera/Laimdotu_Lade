@@ -19,8 +19,8 @@
 
   "vide":{
 
-    "lietotajvards": "Lietotajvārds:",
-    "lietotajs": "Lietotajvārds",
+    "lietotajvards": "Lietotājvārds:",
+    "lietotajs": "Lietotājvārds",
     "darbi": "Ievietoti Darbi:",
     "id": "ID",
     "pievienot_darbu": "Pievienot Darbu",
@@ -31,9 +31,9 @@
     "ladejams": "Ladejams",
     "darba_nosaukums": "Nosaukums",
     "autors": "Autors",
-    "pasts": "e-pasts",
+    "pasts": "E-pasts",
     "izlogoties_poga": "Izlogoties",
-    "anulet_kontu": "Anulēt kontu"
+    "anulet_kontu": "Anulēt Kontu"
   
     
     

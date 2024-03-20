@@ -161,7 +161,10 @@ input[type="button"]{
 table,
 td {
     margin:1rem;
-    border: 1px solid #ecb154;
+    border-top: none;
+    border-left:none;
+    border-right: none;
+    border-bottom: 1px solid #95672c;
     text-align:center;
     
 }
@@ -170,53 +173,23 @@ td {
 th{
   
   border: none;
+  background-color: #eab75c4d;
+  font-style:italic;
  
 }
 table{
  
-  /* position:fixed;
-  top: 17%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  word-wrap: break-word;
- 
-  width: 50%; */
   margin: 1rem;
-  border: 1px solid #ecb154;
+  border: 1px solid #faf0e4;
   text-align: center;
   color: #119721;
   
   
-  color:#119721;
+ 
 }
 
 
-/* table {
-  overflow: scroll;
-  display: block;
-  height: 120px;
-}
-thead>tr {
-  position: absolute;
-  display: block;
-  padding: 0;
-  margin: 0;
-  top: 0;
-  background-color: white;
-}
-tbody>tr:nth-of-type(1) {
-  margin-top: 16px;
-}
-tbody tr {
-  display: block;
-}
-td,
-th {
-  width: 70px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
-} */
+
 #apstiprina,
 #noliedz {
   position: fixed;
@@ -465,7 +438,9 @@ th {
   font-size:20px;
   font-weight:bold;
   margin-top:20rem;
-
+  overflow: auto;
+  scrollbar-color: #e1a340 #a40a08;
+  max-height:70vh;
   left:75%;
   transform: translate(0%, 50%);
   width:20%;
@@ -481,6 +456,7 @@ th {
   left: 50%;
   transform: translate(-50%, -50%);
   overflow: auto;
+  scrollbar-color: #e1a340 #a40a08;
   max-height:70vh; 
   color:#3bb08d;
   font-size:20px;
@@ -491,19 +467,7 @@ th {
 #iespejadzest{
   border: none;
 }
-  /* position:fixed;
- 
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  width:48%;
-  height:70%;
- 
-  border: 3px solid #ecb154;
-  
- 
-  text-decoration: none;
-}  */
+
 
 
 #failu_laukums{
@@ -545,7 +509,7 @@ th {
   cursor:pointer;
 }
 #ladet{
-  background-color: #20d52c;
+  background-color: #00ffb3;
   height:30;
   margin:3px;
   font-size:15px;
@@ -553,7 +517,7 @@ th {
   cursor:pointer;
 }
 #skatit{
-  background-color: #f7d426;
+  background-color: #ecb154;
   height:30;
   margin:3px;
   font-size:15px;
