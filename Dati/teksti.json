@@ -12,7 +12,7 @@
   },
   "ielogosanas":{
 
-    "lietotajvards": "Lietotajvārds:",
+    "lietotajvards": "Lietotājvārds:",
     "parole": "Parole:"
 
   },
@@ -31,15 +31,20 @@
     "ladejams": "Lādējams",
     "darba_nosaukums": "Nosaukums",
     "autors": "Autors",
-    "pasts": "E-pasts",
+    "pasts": "e-pasts",
     "izlogoties_poga": "Izlogoties",
     "anulet_kontu": "Anulēt Kontu"
   
     
     
 
+  },
+  "paroles_maina":{
+    "pasts": "E-pasts:",
+    "jauna_parole": "Jaunā parole:",
+    "atkartot_paroli": "Apstiprināt paroli:"
+
   }
-  
   
  
 }
