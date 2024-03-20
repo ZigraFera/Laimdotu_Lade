@@ -145,6 +145,19 @@ input[type="button"]{
   cursor: grab;
   
 }
+#apstiprina{
+  border: 4px solid #ecb154;
+  background-color: #d10000;
+  color: #feffad;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 190%;
+  width: 350px;
+  height: 80px;
+  margin-bottom: 5px;
+  cursor: grab;
+
+}
 table,
 td {
     margin:1rem;
@@ -241,9 +254,16 @@ th {
 #epasts1{
   margin-left:81px;
 }
-#epasta_kluda,#lvards_kluda,#apstiprinajums_kluda, #kluda{
+#epasta_kluda,#lvards_kluda,#apstiprinajums_kluda{
   position: absolute;
   left:47%;
+  font-style: oblique;
+  align-items:center;
+  color: red;
+}
+#kluda{
+  position: absolute;
+  left:25%;
   font-style: oblique;
   align-items:center;
   color: red;

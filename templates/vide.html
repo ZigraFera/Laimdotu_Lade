@@ -106,10 +106,10 @@
           </tr>
         {% endfor %}
         <tr><th colspan="7">Publiski</th></tr>
-        <!-- Display public works of other users -->
+        
         {% for darbs in publiskais_darbu_saraksts %}
           <tr>
-            <td>{{ info[0] }}</td>
+            <td>{{ darbs[1] }}</td>
             <td>{{ darbs[2] }}</td>
             
             {% if darbs[3] == 'true'%} 

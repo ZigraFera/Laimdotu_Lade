@@ -73,45 +73,46 @@ def select_sql2(cmd, value=None):
   savienojums.commit()
   savienojums.close()
   return answer
+#1. datubaze
+# select_sql("CREATE TABLE IF NOT EXISTS Konts (\
+#   konts_ID INTEGER,\
+#   lietotajvards VARCHAR(100),\
+#   vards TEXT NOT NULL,\
+#   uzvards TEXT NOT NULL,\
+#   pasts VARCHAR(200) NOT NULL UNIQUE,\
+#   parole VARCHAR(50) NOT NULL,\
+#   darbi INTEGER DEFAULT 0,\
+#   PRIMARY KEY(konts_ID, lietotajvards))")
 
-select_sql("CREATE TABLE IF NOT EXISTS Konts (\
-  konts_ID INTEGER PRIMARY KEY AUTOINCREMENT,\
-  lietotajvards VARCHAR(100) PRIMARY KEY NOT NULL,\
-  vards TEXT NOT NULL,\
-  uzvards TEXT NOT NULL,\
-  pasts VARCHAR(200) NOT NULL UNIQUE,\
-  parole VARCHAR(50) NOT NULL,\
-  darbi INTEGER DEFAULT 0)")
+# select_sql("CREATE TABLE IF NOT EXISTS Darbs (\
+#   darbs_ID INTEGER PRIMARY KEY AUTOINCREMENT, \
+#   autors VARCHAR(100),\
+#   nosaukums VARCHAR(200),\
+#   piekluves_nosaukums TEXT,\
+#   konkrets_lietotajs BOOL,\
+#   lietotaji TEXT,\
+#   redzams BOOL,\
+#   ladejams BOOL,\
+#   dati BLOB, \
+#   faila_adrese TEXT,\
+#   FOREIGN KEY(piekluves_nosaukums) REFERENCES Piekluves(piekluves_nosaukums),\
+#   FOREIGN KEY(autors) REFERENCES Konts(lietotajvards))")
 
-select_sql("CREATE TABLE IF NOT EXISTS Darbs (\
-  darbs_ID INTEGER PRIMARY KEY AUTOINCREMENT, \
-  autors VARCHAR(100),\
-  nosaukums VARCHAR(200),\
-  piekluves_nosaukums TEXT,\
-  konkrets_lietotajs BOOL,\
-  lietotaji TEXT,\
-  redzams BOOL,\
-  ladejams BOOL,\
-  dati BLOB, \
-  faila_adrese TEXT,\
-  FOREIGN KEY(piekluves_nosaukums) REFERENCES Piekluves(piekluves_nosaukums),\
-  FOREIGN KEY(autors) REFERENCES Konts(lietotajvards))")
+# select_sql("CREATE TABLE IF NOT EXISTS Piekluves (\
+#   piekluves_nosaukums TEXT PRIMARY KEY,\
+#   apraksts TEXT,\
+#   redzams BOOL,\
+#   ladejams BOOL,\
+#   konkrets_lietotajs BOOL)")
 
-select_sql("CREATE TABLE IF NOT EXISTS Piekluves (\
-  piekluves_nosaukums TEXT PRIMARY KEY,\
-  apraksts TEXT,\
-  redzams BOOL,\
-  ladejams BOOL,\
-  konkrets_lietotajs BOOL)")
+# insert_sql("INSERT OR IGNORE INTO Piekluves (\
+#    piekluves_nosaukums,apraksts,redzams,ladejams,konkrets_lietotajs) \
+#   VALUES ('Ieslēgts lādē','Neviens cits nevar rdzēt vai lejupielādēt šo darbu', false,false,false),\
+#         ('Atklāts','Visi redz, un var lejupladet šo darbu', true,true,false),\
+#         ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true)"
+#         )
 
-insert_sql("INSERT OR IGNORE INTO Piekluves (\
-   piekluves_nosaukums,apraksts,redzams,ladejams,konkrets_lietotajs) \
-  VALUES ('Ieslēgts lādē','Neviens cits nevar rdzēt vai lejupielādēt šo darbu', false,false,false),\
-        ('Atklāts','Visi redz, un var lejupladet šo darbu', true,true,false),\
-        ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true)"
-        )
-
-# ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true),\
+#2. datubaze
 # select_sql("CREATE TABLE IF NOT EXISTS Konts (\
 #   konts_ID INTEGER PRIMARY KEY AUTOINCREMENT,\
 #   lietotajvards VARCHAR(50) NOT NULL UNIQUE,\
@@ -120,7 +121,7 @@ insert_sql("INSERT OR IGNORE INTO Piekluves (\
 #   pasts VARCHAR(200) NOT NULL UNIQUE,\
 #   parole VARCHAR(50) NOT NULL,\
 #   darbi INTEGER DEFAULT 0)")
-# #autors bija Varchar saistīts ar lietotajvardu, bet tagad Intager, eskperiments
+# 
 # select_sql("CREATE TABLE IF NOT EXISTS Darbs (\
 #   darbs_ID INTEGER PRIMARY KEY AUTOINCREMENT, \
 #   autors INTEGER,\
@@ -148,8 +149,45 @@ insert_sql("INSERT OR IGNORE INTO Piekluves (\
 #         ('Atklāts','Visi redz, un var lejupladet šo darbu', true,true,false),\
 #         ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true)"
 #         )
+#3. datubaze
+select_sql("CREATE TABLE IF NOT EXISTS Konts (\
+  konts_ID INTEGER PRIMARY KEY AUTOINCREMENT,\
+  lietotajvards VARCHAR(50) NOT NULL UNIQUE,\
+  vards TEXT NOT NULL,\
+  uzvards TEXT NOT NULL,\
+  pasts VARCHAR(200) NOT NULL UNIQUE,\
+  parole VARCHAR(50) NOT NULL,\
+  darbi INTEGER DEFAULT 0)")
 
-# ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true),\
+select_sql("CREATE TABLE IF NOT EXISTS Darbs (\
+  darbs_ID INTEGER PRIMARY KEY AUTOINCREMENT, \
+  autors VARCHAR(50),\
+  nosaukums VARCHAR(200),\
+  piekluves_nosaukums TEXT,\
+  konkrets_lietotajs BOOL,\
+  lietotaji TEXT,\
+  redzams BOOL,\
+  ladejams BOOL,\
+  dati BLOB, \
+  faila_adrese TEXT,\
+  konts_ID INTEGER,\
+  FOREIGN KEY(piekluves_nosaukums) REFERENCES Piekluves(piekluves_nosaukums),\
+  FOREIGN KEY(autors) REFERENCES Konts(konts_ID))")
+
+select_sql("CREATE TABLE IF NOT EXISTS Piekluves (\
+  piekluves_nosaukums TEXT PRIMARY KEY,\
+  apraksts TEXT,\
+  redzams BOOL,\
+  ladejams BOOL,\
+  konkrets_lietotajs BOOL)")
+
+insert_sql("INSERT OR IGNORE INTO Piekluves (\
+   piekluves_nosaukums,apraksts,redzams,ladejams,konkrets_lietotajs) \
+  VALUES ('Ieslēgts lādē','Neviens cits nevar rdzēt vai lejupielādēt šo darbu', false,false,false),\
+        ('Atklāts','Visi redz, un var lejupladet šo darbu', true,true,false),\
+        ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true)"
+        )
+
 
 
 def nolasit_teksta_datus(vietnes_vieta):
@@ -264,14 +302,20 @@ def sakums():
 
 @app.route("/paroles_maina", methods=["POST", "GET"])
 def paroles_maina():
+  kluda = ""
   teksti = nolasit_teksta_datus("paroles_maina")
   if request.method == "POST":
 
     konts = request.cookies.get("konts")
-
-    update_sql("UPDATE Konts SET parole=? WHERE pasts = ?",
-               (request.form['j_parole'], request.form['epasts1']))
-    redirect("/ielogosanas")
+    pasts = select_sql2("SELECT pasts FROM Konts WHERE pasts = ?",
+                        (request.form["epasts1"], ))
+    if pasts:
+      update_sql("UPDATE Konts SET parole=? WHERE pasts = ?",
+                 (request.form['j_parole'], request.form['epasts1']))
+      return redirect("/ielogosanas")
+    else:
+      kluda = "E-pasts neeksistē"
+      return render_template("paroles_maina.html", teksti=teksti,kluda=kluda)
   return render_template("paroles_maina.html", teksti=teksti)
 
 
@@ -280,21 +324,33 @@ def registresanas():
   kluda = ""
   teksti = nolasit_teksta_datus("registresanas")
   if request.method == "POST":
-
+  
+    answer2= select_sql2("SELECT pasts FROM Konts WHERE pasts = ?",\
+     (request.form["epasts"],))
     answer= select_sql2("SELECT lietotajvards FROM Konts WHERE lietotajvards = ?",\
                        (request.form["lvards"],))
-
+  
+  
     print(answer)
-    if len(answer) == 0:
+    print(answer2)
+    if len(answer) != 0:
+       kluda = "Lietotājvārds jau eksistē"
+       return render_template("registresanas.html", teksti=teksti, kluda=kluda)
+    elif len(answer2) != 0:
+      kluda = "E-pasts jau  ir aizņemts"
+      return render_template("registresanas.html", teksti=teksti, kluda=kluda)
+  
+    else:
       insert_sql("INSERT INTO Konts(lietotajvards,vards,uzvards,pasts,parole) VALUES (?, ?,?,?,?)",\
                  (request.form["lvards"],request.form["vards"],request.form["uzvards"],request.form["epasts"], request.form["parole"] ))
-
       return redirect("/ielogosanas")
-    else:
-      kluda = "Lietotājvārds jau eksistē"
-      return render_template("registresanas.html", teksti=teksti, kluda=kluda)
+
+
 
   return render_template("registresanas.html", teksti=teksti)
+
+
+ 
 
 
 @app.route("/ielogosanas", methods=["GET", "POST"])
