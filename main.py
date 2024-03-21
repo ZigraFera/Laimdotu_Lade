@@ -8,7 +8,13 @@ from werkzeug.utils import secure_filename
 
 
 
-
+# def drop_table(table_name):
+#   conn = sqlite3.connect('lietotaji.db')
+#   cursor = conn.cursor()
+#   cursor.execute(f"DROP TABLE IF EXISTS {table_name};")
+#   conn.commit()
+#   conn.close()
+  
 
 def update_sql(cmd, value=None):
   savienojums = sqlite3.connect('lietotaji.db')
@@ -183,9 +189,9 @@ select_sql("CREATE TABLE IF NOT EXISTS Piekluves (\
 
 insert_sql("INSERT OR IGNORE INTO Piekluves (\
    piekluves_nosaukums,apraksts,redzams,ladejams,konkrets_lietotajs) \
-  VALUES ('Ieslēgts lādē','Neviens cits nevar rdzēt vai lejupielādēt šo darbu', false,false,false),\
-        ('Atklāts','Visi redz, un var lejupladet šo darbu', true,true,false),\
-        ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true)"
+  VALUES ('Ieslēgts lādē','Neviens cits nevar redzēt vai lejupielādēt šo darbu.', false,false,false),\
+        ('Atklāts','Visi redz, un var lejupielādēt šo darbu.', true,true,false),\
+        ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām.','','',true)"
         )
 
 
@@ -241,7 +247,7 @@ def find_file_location(darbs_ID, file):
 
 
 app = Flask("app")
-
+#Nākotnes plāniem
 app.config['ALLOWED_EXTENSIONS'] = [
     '.pdf', '.png', '.jpg', '.jpeg', '.gif', '.doc', '.docx', '.xls', '.xlsx',
     '.ppt', '.pptx', '.mp4', '.mp3', 'm4a', '.wav', '.ogg'
@@ -299,7 +305,7 @@ def sakums():
                          )
   return render_template("sakums.html", teksti=teksti)
 
-
+#paroli vai mainīt tikai eksistējošam e-pastam
 @app.route("/paroles_maina", methods=["POST", "GET"])
 def paroles_maina():
   kluda = ""
@@ -483,7 +489,7 @@ def dzest_darbs(darbs_ID):
     
     return "Neatļauta piekļuve", 403
 
-
+#apskatās darbu
 @app.route('/skatit_darbs/<int:darbs_ID>', methods=["GET"])
 def skatit_darbs(darbs_ID):
   konts = request.cookies.get("konts")
@@ -539,16 +545,16 @@ def ladet_darbs(darbs_ID):
     if os.path.exists(file_location):
       return send_file(file_location, as_attachment=True)
     else:
-      return "File not found", 404
+      return "Fails nav atrats", 404
   else:
-    return "File information not found", 404
+    return "Faila informācīja nav atrasta", 404
   
 
 def DzestLietotajaMapi(konts):
   main_folder = os.path.join("Augsuplades", str(konts))
-  # Delete the folder and its contents
+  #dzeš mapi ar tās saturu
   shutil.rmtree(main_folder, ignore_errors=True)
-  print(f"Folder '{main_folder}' and its contents have been deleted.")
+  # print(f"Mape '{main_folder}' dzēsta.")
 #dzeš kontu
 @app.route('/anulet_kontu', methods=["POST", "GET"])
 def anulet_konts():
@@ -557,13 +563,13 @@ def anulet_konts():
     lietotajs = request.cookies.get("lietotajs")
     answer_rezult = select_sql2("SELECT konts_ID FROM Konts WHERE parole = ?", (request.form["parole_dzes"],))
     if len(answer_rezult) > 0:
-        # Delete the user's account and associated folder
+        # Dzēš lietotāja mapi un kontu
         delete_sql("DELETE FROM Darbs WHERE autors = ?", (lietotajs,))
         delete_sql("DELETE FROM Konts WHERE konts_ID = ?", (konts,))
         DzestLietotajaMapi(konts)
-        # Logout the user
+        #izlogo lietoāju
         return redirect('/izlogoties')
     
   return redirect('/')
   
-app.run(host="0.0.0.0", port=8080, debug=True)
+app.run(host="0.0.0.0", port=8080)
