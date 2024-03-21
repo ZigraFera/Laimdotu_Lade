@@ -416,7 +416,7 @@ def darba_ievitosana():
   fails = request.files["darba_fails"]
   tips = os.path.splitext(fails.filename)[1]
   if tips not in ['.jpg', '.jpeg', '.png', '.gif']:
-    return "Failam nav pieņemams formāts. Lūdzu izvēlieties citu failu."
+    return "Failam nav pieņemams formāts. Lūdzu, izvēlieties citu failu!"
   konts = request.cookies.get("konts")
   autors = select_sql2("SELECT lietotajvards FROM Konts WHERE konts_ID = ?",
                        (konts, ))[0][0]
