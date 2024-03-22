@@ -16,11 +16,10 @@ let izv = document.getElementById("izv");
 let ele = document.getElementsByName("redz");
 let registret = false;
 let ielogot = false;
-const Lietotajvardi = [];
-const Pasti = [];
 
 
 
+// Pārbauda e-pastu
 
 function EpastaParbaude() {
   if (epasts.value != "") {
@@ -37,10 +36,7 @@ function EpastaParbaude() {
   epasts.style.borderColor = "#ecb154";
 
 }
-
-
-
-
+// Pārbauda jaunās paroles apstiprinājumu
 function ParolesSakritiba() {
   if (j_parole.value != "" && apstiprinajums.value != "") {
     if (j_parole.value != apstiprinajums.value) {
@@ -58,7 +54,7 @@ function ParolesSakritiba() {
   apstiprinajums.style.borderColor = "#ecb154";
   j_parole.style.borderColor = "#ecb154";
 }
-
+//Animācija un elementu kotrole
 function VistokluAnimacija(clicked_id) {
 
   if (clicked_id == "varianti1") {
@@ -86,21 +82,10 @@ function RaditPogas() {
 function AnimacijaSakas() {
   SleptPogas();
 }
-
 function AnimacijaBeidzas() {
-
   Parslegsanas();
   RaditPogas();
 }
-
-function Bridinat() {
-  if (confirm("Ja anulēsi kontu zaudēsi savus darbus! Lejuplādējiet failus pirms anulēšanas! Vai vēl joprojām vēlaties anulēt kontu?")) {
-    Aptauja();
-  } else {
-    alert("Konta anulēšana atcelta!");
-  }
-}
-
 function Parslegsanas() {
   document.body.classList.add("fade-out");
 
@@ -113,6 +98,16 @@ function Parslegsanas() {
     }
   }, 1000);
 }
+//Anulēšanas vrīdinājums
+function Bridinat() {
+  if (confirm("Ja anulēsi kontu zaudēsi savus darbus! Lejuplādējiet failus pirms anulēšanas! Vai vēl joprojām vēlaties anulēt kontu?")) {
+    Aptauja();
+  } else {
+    alert("Konta anulēšana atcelta!");
+  }
+}
+
+
 function Aptauja() {
   const aptauja = document.getElementById("aptauja");
   const parklajs = document.getElementById("parklaj"); // iegūst elementu
@@ -153,6 +148,7 @@ function JaunaDarbaStadija(){
   document.getElementById("redzams_1").value = ""
   
 }
+//Darba iestatījumu kontrole
 function ParaditAprakstu(){
   let drosibasTipsSelect = document.getElementById("drosibas_tips").selectedIndex;
   let konkretsLietotajsCheckbox = document.getElementById("konkrets_lietotajs");
@@ -234,15 +230,11 @@ function ParaditAprakstu(){
       //izv.style.display = "none";
       //lietotajsSelect.style.visibility = "hidden";
       document.getElementById("apraksts").innerHTML= document.getElementById("drosiba_tips2").value;
-      
-   
-      
       if (document.getElementById("redzams_1").value== "true") {
         console.log("Selected: Redzams");
-        // Additional logic if Redzams is selected
       } else if (document.getElementById("redzams_1").value== "false") {
         console.log("Selected: Neredzams");
-        // Additional logic if Neredzams is selected
+        
       }
       else{
         console.log("Selected: none");
@@ -344,6 +336,7 @@ function ParaditAprakstu(){
   //     selectedPaskaidrojumaElements.style.display = "block";
   // }
 }
+// Nākotnei
 function Notirit() {
   for(let i=0;i<ele.length;i++)
     ele[i].checked = false;

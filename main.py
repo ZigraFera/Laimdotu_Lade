@@ -7,29 +7,19 @@ from flask import Flask, redirect, render_template, request, url_for, send_from_
 from werkzeug.utils import secure_filename
 
 
-
-# def drop_table(table_name):
-#   conn = sqlite3.connect('lietotaji.db')
-#   cursor = conn.cursor()
-#   cursor.execute(f"DROP TABLE IF EXISTS {table_name};")
-#   conn.commit()
-#   conn.close()
-  
-
+# izveio funkcijas, kas ļaus izdevīgi savienoties ar datubāzi
+#anglski nosaukumus mainīgajiem vai funkcijām kuru darbība man saistās ar sistēmas darbību 
 def update_sql(cmd, value=None):
   savienojums = sqlite3.connect('lietotaji.db')
   s = savienojums.cursor()
-
   if value is not None:
     res = s.execute(cmd, value).fetchall()
   else:
     res = s.execute(cmd).fetchall()
-
   savienojums.commit()
   savienojums.close()
   return res
-
-
+  
 def delete_sql(cmd, value=None):
   savienojums = sqlite3.connect('lietotaji.db')
   s = savienojums.cursor()
@@ -79,46 +69,9 @@ def select_sql2(cmd, value=None):
   savienojums.commit()
   savienojums.close()
   return answer
+
+
 #1. datubaze
-# select_sql("CREATE TABLE IF NOT EXISTS Konts (\
-#   konts_ID INTEGER,\
-#   lietotajvards VARCHAR(100),\
-#   vards TEXT NOT NULL,\
-#   uzvards TEXT NOT NULL,\
-#   pasts VARCHAR(200) NOT NULL UNIQUE,\
-#   parole VARCHAR(50) NOT NULL,\
-#   darbi INTEGER DEFAULT 0,\
-#   PRIMARY KEY(konts_ID, lietotajvards))")
-
-# select_sql("CREATE TABLE IF NOT EXISTS Darbs (\
-#   darbs_ID INTEGER PRIMARY KEY AUTOINCREMENT, \
-#   autors VARCHAR(100),\
-#   nosaukums VARCHAR(200),\
-#   piekluves_nosaukums TEXT,\
-#   konkrets_lietotajs BOOL,\
-#   lietotaji TEXT,\
-#   redzams BOOL,\
-#   ladejams BOOL,\
-#   dati BLOB, \
-#   faila_adrese TEXT,\
-#   FOREIGN KEY(piekluves_nosaukums) REFERENCES Piekluves(piekluves_nosaukums),\
-#   FOREIGN KEY(autors) REFERENCES Konts(lietotajvards))")
-
-# select_sql("CREATE TABLE IF NOT EXISTS Piekluves (\
-#   piekluves_nosaukums TEXT PRIMARY KEY,\
-#   apraksts TEXT,\
-#   redzams BOOL,\
-#   ladejams BOOL,\
-#   konkrets_lietotajs BOOL)")
-
-# insert_sql("INSERT OR IGNORE INTO Piekluves (\
-#    piekluves_nosaukums,apraksts,redzams,ladejams,konkrets_lietotajs) \
-#   VALUES ('Ieslēgts lādē','Neviens cits nevar rdzēt vai lejupielādēt šo darbu', false,false,false),\
-#         ('Atklāts','Visi redz, un var lejupladet šo darbu', true,true,false),\
-#         ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true)"
-#         )
-
-#2. datubaze
 # select_sql("CREATE TABLE IF NOT EXISTS Konts (\
 #   konts_ID INTEGER PRIMARY KEY AUTOINCREMENT,\
 #   lietotajvards VARCHAR(50) NOT NULL UNIQUE,\
@@ -155,7 +108,7 @@ def select_sql2(cmd, value=None):
 #         ('Atklāts','Visi redz, un var lejupladet šo darbu', true,true,false),\
 #         ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām','','',true)"
 #         )
-#3. datubaze
+# 2.datubaze
 select_sql("CREATE TABLE IF NOT EXISTS Konts (\
   konts_ID INTEGER PRIMARY KEY AUTOINCREMENT,\
   lietotajvards VARCHAR(50) NOT NULL UNIQUE,\
@@ -194,8 +147,6 @@ insert_sql("INSERT OR IGNORE INTO Piekluves (\
         ('Uzticēta atslega','Darba piekļuves atļaujas piešķir pēc saviem ieskatiem, konkrētām personām.','','',true)"
         )
 
-
-
 def nolasit_teksta_datus(vietnes_vieta):
   teksta_fails = open("Dati/teksti.json", encoding="utf8")
   vietnes_teksti = json.load(teksta_fails)
@@ -211,8 +162,7 @@ def nolasit_teksta_datus(vietnes_vieta):
   elif vietnes_vieta == "vide":
     return vietnes_teksti.get("vide")
 
-
-def IzveidotLietotajaMapi(konts):
+def create_user_folder(konts):
   main_folder = os.path.join("Augsuplades", str(konts))
   public_folder = os.path.join(main_folder, "public")
   private_folder = os.path.join(main_folder, "private")
@@ -226,10 +176,12 @@ def IzveidotLietotajaMapi(konts):
 
   return main_folder, public_folder, private_folder
 
-
+def delete_user_folder(konts):
+  main_folder = os.path.join("Augsuplades", str(konts))
+  #dzeš mapi ar tās saturu
+  shutil.rmtree(main_folder, ignore_errors=True)
+  # print(f"Mape '{main_folder}' dzēsta.")
 def find_file_location(darbs_ID, file):
-
-
   file_data = select_sql2(
       "SELECT autors, nosaukums,redzams,ladejams FROM Darbs WHERE darbs_ID = ?",
       (darbs_ID, ))
@@ -244,8 +196,7 @@ def find_file_location(darbs_ID, file):
   else:
     file_location = private_folder
   return file_location
-
-
+  
 app = Flask("app")
 #Nākotnes plāniem
 app.config['ALLOWED_EXTENSIONS'] = [
@@ -253,7 +204,7 @@ app.config['ALLOWED_EXTENSIONS'] = [
     '.ppt', '.pptx', '.mp4', '.mp3', 'm4a', '.wav', '.ogg'
 ]
 
-
+#sākums, vide
 @app.route("/")
 def sakums():
   global public_path, private_path
@@ -271,10 +222,7 @@ def sakums():
     saraksts = select_sql2("SELECT konts_ID, lietotajvards, pasts FROM Konts")
     info = insert_sql(
         "SELECT lietotajvards, pasts, darbi, konts_ID FROM Konts WHERE konts_ID = ?",
-        (konts, ))[0]
-    
-
-   
+        (konts, ))[0]  
     privatais_darbu_saraksts = select_sql2(
         "SELECT darbs_ID, autors, nosaukums, redzams, ladejams,faila_adrese FROM Darbs  WHERE autors = ? AND redzams = 'false'AND ladejams = 'false'",
         (lietotajs, ))
@@ -282,7 +230,7 @@ def sakums():
         "SELECT darbs_ID, autors, nosaukums, redzams, ladejams, faila_adrese FROM Darbs  WHERE redzams = 'true'AND ladejams = 'true'"
     )
     # autors = info[3]
-    main_folder, public_folder, private_folder = IzveidotLietotajaMapi(konts)
+    main_folder, public_folder, private_folder = create_user_folder(konts)
     print(f"user_folder: {main_folder}")
     print(f"public_folder: {public_folder}")
     print(f"private_folder: {private_folder}")
@@ -299,13 +247,10 @@ def sakums():
                            saraksts=saraksts,
                            privatais_darbu_saraksts=privatais_darbu_saraksts,
                            publiskais_darbu_saraksts=publiskais_darbu_saraksts,
-                          lietotajs=lietotajs
-                           # konts=konts,
-                           # autors=autors,
-                         )
+                          lietotajs=lietotajs)
   return render_template("sakums.html", teksti=teksti)
-
-#paroli vai mainīt tikai eksistējošam e-pastam
+#-------------------------------------------------------AUTORIZĀCIJA---------------------------------------
+#paroles maiņa
 @app.route("/paroles_maina", methods=["POST", "GET"])
 def paroles_maina():
   kluda = ""
@@ -315,6 +260,7 @@ def paroles_maina():
     konts = request.cookies.get("konts")
     pasts = select_sql2("SELECT pasts FROM Konts WHERE pasts = ?",
                         (request.form["epasts1"], ))
+    # paroles mainņas kontole
     if pasts:
       update_sql("UPDATE Konts SET parole=? WHERE pasts = ?",
                  (request.form['j_parole'], request.form['epasts1']))
@@ -324,41 +270,32 @@ def paroles_maina():
       return render_template("paroles_maina.html", teksti=teksti,kluda=kluda)
   return render_template("paroles_maina.html", teksti=teksti)
 
-
+#registrēšanās
 @app.route("/registresanas", methods=["GET", "POST"])
 def registresanas():
   kluda = ""
   teksti = nolasit_teksta_datus("registresanas")
   if request.method == "POST":
-  
+    #lietotājvārda, e-pasta kontrole
     answer2= select_sql2("SELECT pasts FROM Konts WHERE pasts = ?",\
      (request.form["epasts"],))
     answer= select_sql2("SELECT lietotajvards FROM Konts WHERE lietotajvards = ?",\
                        (request.form["lvards"],))
   
-  
-    print(answer)
-    print(answer2)
     if len(answer) != 0:
        kluda = "Lietotājvārds jau eksistē"
        return render_template("registresanas.html", teksti=teksti, kluda=kluda)
     elif len(answer2) != 0:
       kluda = "E-pasts jau  ir aizņemts"
       return render_template("registresanas.html", teksti=teksti, kluda=kluda)
-  
     else:
+      # ievieto kontu datu bāzē
       insert_sql("INSERT INTO Konts(lietotajvards,vards,uzvards,pasts,parole) VALUES (?, ?,?,?,?)",\
                  (request.form["lvards"],request.form["vards"],request.form["uzvards"],request.form["epasts"], request.form["parole"] ))
       return redirect("/ielogosanas")
-
-
-
   return render_template("registresanas.html", teksti=teksti)
 
-
- 
-
-
+#ielogošanās un tās kontole
 @app.route("/ielogosanas", methods=["GET", "POST"])
 def ielogosanas():
   kluda = ""
@@ -377,40 +314,28 @@ def ielogosanas():
 
   return render_template("ielogosanas.html", teksti=teksti, kluda=kluda)
 
-
+#izlogošanās
 @app.route("/izlogoties")
 def izlogoties():
   answer = redirect("/")
   answer.delete_cookie("konts")
   answer.delete_cookie("lietotajs")
   return answer
-
-
+#------------------------------------------------------- LIETOTĀJA VIDE-------------------------------------------------------
+#pārslēdzas uz  darba iestatījumiem
 @app.route("/jauns_darbs", methods=["GET", "POST"])
 def jauns_darbs():
   piekluves = select_sql(
       "SELECT piekluves_nosaukums,apraksts,redzams,ladejams FROM Piekluves")
   lietotaji = select_sql("SELECT lietotajvards, pasts FROM Konts")
- 
-  # public_folder = os.path.join(main_folder, "public")
-  # private_folder = os.path.join(main_folder, "private")
-  # if not os.path.exists(public_folder):
-  #   os.makedirs(public_folder)
-  # if not os.path.exists(private_folder):
-  #   os.makedirs(private_folder)
-
   # print(f"user_folder: {main_folder}")
   # print(f"public_folder: {public_folder}")
   # print(f"private_folder: {private_folder}")
-
- 
-
-
   return render_template("jauns_darbs.html",
                          piekluves=piekluves,
                          lietotaji=lietotaji)
 
-
+# saglabā darbu datubāzē un mapē
 @app.route("/darba_ievietosana", methods=["POST"])
 def darba_ievitosana():
   fails = request.files["darba_fails"]
@@ -423,10 +348,8 @@ def darba_ievitosana():
   drosibas_tips = request.form['drosibas_tips']
   redzams = request.form['redzams_1']
   ladejamiba = request.form['ladejams_1']
-  # print(f"autors: {autors}")
-
- 
-  main_folder, public_folder, private_folder = IzveidotLietotajaMapi(konts)
+  
+  main_folder, public_folder, private_folder = create_user_folder(konts)
   if redzams == "true" and ladejamiba == "true":
     folder_path = public_folder
   else:
@@ -456,22 +379,14 @@ def darba_ievitosana():
 @app.route('/dzest_darbs/<int:darbs_ID>', methods=["POST"])
 def dzest_darbs(darbs_ID):
   konts = request.cookies.get("konts")
-
-  
   autors = select_sql2("SELECT lietotajvards FROM Konts WHERE konts_ID = ?",
                        (konts, ))[0][0]
-
   if autors:
-    
     file_data = select_sql2(
         "SELECT nosaukums, redzams, ladejams, dati FROM Darbs WHERE darbs_ID = ?",
         (darbs_ID, ))
-
-    
     delete_sql("DELETE FROM Darbs WHERE darbs_ID=?", (darbs_ID, ))
-
-    
-    main_folder, public_folder, private_folder = IzveidotLietotajaMapi(konts)
+    main_folder, public_folder, private_folder = create_user_folder(konts)
     if file_data[0][1] == "true" and file_data[0][2] == "true":
       folder_path = public_folder
     else:
@@ -485,8 +400,7 @@ def dzest_darbs(darbs_ID):
       os.remove(file_path)
 
     return redirect('/')
-  else:
-    
+  else: 
     return "Neatļauta piekļuve", 403
 
 #apskatās darbu
@@ -519,19 +433,16 @@ def skatit_darbs(darbs_ID):
           return send_file(file_location, as_attachment=False)
        
         else:
-      
           return "Neatbalstīts faila tips", 400
       else:
-        
         return "Fails nav atrasts", 404
     else:
       
       return "Fails nav redzams", 403
   else:
-    
     return "Faila informācija nav atrasta", 404
 
-
+#Lejuplādē darbu
 @app.route('/ladet_darbs/<int:darbs_ID>', methods=["GET"])
 def ladet_darbs(darbs_ID):
   konts = request.cookies.get("konts")
@@ -550,11 +461,7 @@ def ladet_darbs(darbs_ID):
     return "Faila informācīja nav atrasta", 404
   
 
-def DzestLietotajaMapi(konts):
-  main_folder = os.path.join("Augsuplades", str(konts))
-  #dzeš mapi ar tās saturu
-  shutil.rmtree(main_folder, ignore_errors=True)
-  # print(f"Mape '{main_folder}' dzēsta.")
+
 #dzeš kontu
 @app.route('/anulet_kontu', methods=["POST", "GET"])
 def anulet_konts():
@@ -566,7 +473,7 @@ def anulet_konts():
         # Dzēš lietotāja mapi un kontu
         delete_sql("DELETE FROM Darbs WHERE autors = ?", (lietotajs,))
         delete_sql("DELETE FROM Konts WHERE konts_ID = ?", (konts,))
-        DzestLietotajaMapi(konts)
+        delete_user_folder(konts)
         #izlogo lietoāju
         return redirect('/izlogoties')
     
